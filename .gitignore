@@ -1,4 +1,6 @@
 /.env
 /node_modules
-/Note.md
 /Notes
+
+# Connect database
+src/dbs/init.mongodb.lv0.js
