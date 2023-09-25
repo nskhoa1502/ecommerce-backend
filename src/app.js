@@ -8,25 +8,21 @@ const app = express();
 
 // console.log(`Process: `, process.env);
 // Init middlewares
-
+app.use(express.json());
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression());
 
 // init database
 require("./dbs/init.mongodb");
+
+/* USE TO CHECK SERVER 
 const { checkOverload } = require("./helpers/check.connect");
 checkOverload();
+*/
 
 // init router
-app.get("/", (req, res, next) => {
-  //   const strCompress = "Hello World";
-
-  return res.status(200).json({
-    // message: "strCompress",
-    // metadata: strCompress.repeat(10000),
-  });
-});
+app.use("/", require("./routes"));
 
 // handling errors
 
