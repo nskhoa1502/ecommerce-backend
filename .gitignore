@@ -4,3 +4,8 @@
 
 # Connect database
 src/dbs/init.mongodb.lv0.js
+
+
+# Config
+src/configs/config.mongodb.lv0.js
+src/configs/config.mongodb.lv1.js

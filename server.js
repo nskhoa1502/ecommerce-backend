@@ -1,6 +1,9 @@
 const app = require("./src/app");
+const {
+  app: { port },
+} = require("./src/configs/config.mongodb");
 
-const PORT = 5000;
+const PORT = port || 5000;
 
 const server = app.listen(5000, () => {
   console.log("Service eCommerce start at port ", PORT);

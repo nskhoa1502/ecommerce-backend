@@ -14,6 +14,8 @@ const countConnect = () => {
 
 // Check overload
 const checkOverload = () => {
+  return;
+  /*
   setInterval(() => {
     const numConnections = mongoose.connections.length;
 
@@ -32,6 +34,8 @@ const checkOverload = () => {
       // notify.send(....)
     }
   }, _SECONDS); // Monitor every 5 seconds
+
+  */
 };
 
 module.exports = {
