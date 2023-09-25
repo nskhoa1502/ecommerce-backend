@@ -15,7 +15,7 @@ const RoleShop = {
 
 class AccessService {
   static signUp = async ({ name, email, password }) => {
-    console.log({ name, email, password });
+    // console.log({ name, email, password });
     try {
       // Step 1 : Check email exist
 
@@ -40,12 +40,13 @@ class AccessService {
       });
 
       if (newShop) {
-        // Create private and public key
+        // Step 3 : Create private and public key
         const privateKey = crypto.randomBytes(32).toString("hex");
         const publicKey = crypto.randomBytes(32).toString("hex");
 
         // console.log({ privateKey, publicKey }); // save to collection KeyStore
 
+        // Step 4 : Use keyToken service to create a record
         const keyStore = await KeyTokenService.createKeyToken({
           userId: newShop._id,
           publicKey,
@@ -59,7 +60,7 @@ class AccessService {
           };
         }
 
-        // create token pair
+        // Create accessToken and refreshToken using createTokenPair
         const tokens = await createTokenPair(
           { userId: newShop._id, email },
           publicKey,
@@ -79,6 +80,11 @@ class AccessService {
           },
         };
       }
+
+      return {
+        code: 200,
+        metadata: null,
+      };
     } catch (error) {
       return {
         code: "xxx",

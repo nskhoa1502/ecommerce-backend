@@ -9,6 +9,11 @@ const app = express();
 // console.log(`Process: `, process.env);
 // Init middlewares
 app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression());
