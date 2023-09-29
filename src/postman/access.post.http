@@ -6,8 +6,8 @@ Content-Type: application/json
 x-api-key: 861ecbef0e079b20afa295ed6135b98a32c341cf2c8c248f200170a33c368cac
 
 {
-    "name":"Shop eCOM2",
-    "email":"admin2@gmail.com",
+    "name":"Shop eCOM10",
+    "email":"admin10@gmail.com",
     "password":"123456"
 }
 
