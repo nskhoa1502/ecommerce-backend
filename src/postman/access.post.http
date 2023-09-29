@@ -7,7 +7,17 @@ x-api-key: 861ecbef0e079b20afa295ed6135b98a32c341cf2c8c248f200170a33c368cac
 
 {
     "name":"Shop eCOM10",
-    "email":"admin10@gmail.com",
+    "email":"admin1201@gmail.com",
     "password":"123456"
 }
 
+
+### login
+POST {{url_dev}}/shop/login
+Content-Type: application/json
+x-api-key: ca073e822bab59b0b5a4e697cd05aef741238a2263147e83f54213304a38cabc
+
+{
+    "email":"admin1201@gmail.com",
+    "password":"123456"
+}

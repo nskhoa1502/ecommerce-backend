@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const KeyTokenService = require("../services/keyToken.services");
 const { createTokenPair } = require("../auth/authUtils");
-const { getInfoData } = require("../utils");
+const { getInfoData, generateKey } = require("../utils");
 const {
   BadRequestError,
   ConflictRequestError,
@@ -17,7 +17,55 @@ const RoleShop = {
   ADMIN: "ADMIN",
 };
 
+// ======= SERVICE ======= //
+const { findShopByEmail } = require("./shop.service");
 class AccessService {
+  // Frontend should include refreshToken in the request, if user already had cookie, we don't need to query into database => save resource and faster
+
+  /*
+  1 - Check email in database
+  2 - match password
+  3 - Generate privateKey and publicKey
+  4 - Generate tokens - accessToken and refreshToken and save
+  5 - Get data and return login
+  */
+  static login = async ({ email, password, refreshToken = null }) => {
+    // 1. Check email in database
+    const foundShop = await findShopByEmail({ email });
+    if (!foundShop) throw new BadRequestError("Shop not registered");
+
+    // 2. Match password
+    const match = bcrypt.compare(password, foundShop.password);
+    if (!match) throw new AuthFailureError("Authentication error");
+
+    // 3.
+    // create privateKey, publicKey
+    const privateKey = generateKey();
+    const publicKey = generateKey();
+
+    // 4. Generate tokens
+    const tokens = await createTokenPair(
+      { userId: foundShop._id, email },
+      publicKey,
+      privateKey
+    );
+
+    // Save privateKey, publicKey and refreshToken into database
+    await KeyTokenService.createKeyToken({
+      userId: foundShop._id,
+      refreshToken: tokens.refreshToken,
+      privateKey,
+      publicKey,
+    });
+    return {
+      shop: getInfoData({
+        fields: ["_id", "name", "email"],
+        object: foundShop,
+      }),
+      tokens,
+    };
+  };
+
   static signUp = async ({ name, email, password }) => {
     // console.log({ name, email, password });
 
@@ -43,8 +91,8 @@ class AccessService {
 
     if (newShop) {
       // Step 3 : Create private and public key
-      const privateKey = crypto.randomBytes(32).toString("hex");
-      const publicKey = crypto.randomBytes(32).toString("hex");
+      const privateKey = generateKey();
+      const publicKey = generateKey();
 
       // console.log({ privateKey, publicKey }); // save to collection KeyStore
 
