@@ -29,6 +29,29 @@ checkOverload();
 // init router
 app.use("/", require("./routes"));
 
-// handling errors
+// HANDLING ERRORS
+
+// 404 errors
+
+app.use((req, res, next) => {
+  const error = new Error("Not Found");
+  error.status = 404;
+  return res.status(404).json({
+    status: "Error",
+    code: error.status,
+    message: "Not Found",
+  });
+});
+
+// Errors
+app.use((error, req, res, next) => {
+  const statusCode = error.status || 500;
+  return res.status(statusCode).json({
+    status: "Error",
+    code: statusCode,
+    message: error.message || "Internal Server Error",
+    stack: error.stack,
+  });
+});
 
 module.exports = app;
