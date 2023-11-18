@@ -1,0 +1,41 @@
+HTTP/1.1 201 Created
+Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Content-Type: application/json; charset=utf-8
+Content-Length: 670
+ETag: W/"29e-kA8mpTe7V+qJUoQXFHm3+K6o3VM"
+Vary: Accept-Encoding
+Date: Sat, 18 Nov 2023 11:36:03 GMT
+Connection: close
+
+{
+  "message": "Registered successfully!",
+  "status": 201,
+  "metadata": {
+    "code": 201,
+    "metadata": {
+      "shop": {
+        "_id": "6558a1a3374243730cb974e6",
+        "name": "Shop eCOM2",
+        "email": "admin2@gmail.com"
+      },
+      "tokens": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTU4YTFhMzM3NDI0MzczMGNiOTc0ZTYiLCJlbWFpbCI6ImFkbWluMkBnbWFpbC5jb20iLCJpYXQiOjE3MDAzMDczNjMsImV4cCI6MTcwMDQ4MDE2M30.5vnxqbZrXIq5dE8BWBEfJbD1FoTy00EqAj7Rpuo4fVc",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTU4YTFhMzM3NDI0MzczMGNiOTc0ZTYiLCJlbWFpbCI6ImFkbWluMkBnbWFpbC5jb20iLCJpYXQiOjE3MDAzMDczNjMsImV4cCI6MTcwMDkxMjE2M30.FhhOsRChKxP2lBFnXsm6pEOmVy3QuDgwaw11JaOEuM4"
+      }
+    }
+  },
+  "options": {
+    "limit": 10
+  }
+}

@@ -3,7 +3,7 @@ const apiKeyModel = require("../models/apiKey.model");
 const crypto = require("crypto");
 
 const findApiKeyById = async (key) => {
-  //   Check if apiKey exist in database
+  // //   Check if apiKey exist in database
   //   const newKey = await apiKeyModel.create({
   //     key: crypto.randomBytes(32).toString("hex"),
   //     permissions: ["0000"],

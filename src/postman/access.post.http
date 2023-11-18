@@ -3,11 +3,11 @@
 
 POST {{url_dev}}/shop/signup
 Content-Type: application/json
-x-api-key: 861ecbef0e079b20afa295ed6135b98a32c341cf2c8c248f200170a33c368cac
+x-api-key: f8547d7c3c6db4233dcdc6e2b0e5cc7d724c918886184ada4b3b5672f6b2a08b
 
 {
-    "name":"Shop eCOM10",
-    "email":"admin1201@gmail.com",
+    "name":"Shop eCOM2",
+    "email":"admin2@gmail.com",
     "password":"123456"
 }
 
@@ -15,9 +15,16 @@ x-api-key: 861ecbef0e079b20afa295ed6135b98a32c341cf2c8c248f200170a33c368cac
 ### login
 POST {{url_dev}}/shop/login
 Content-Type: application/json
-x-api-key: ca073e822bab59b0b5a4e697cd05aef741238a2263147e83f54213304a38cabc
+x-api-key: f8547d7c3c6db4233dcdc6e2b0e5cc7d724c918886184ada4b3b5672f6b2a08b
 
 {
-    "email":"admin1201@gmail.com",
+    "email":"admin@gmail.com",
     "password":"123456"
 }
+
+### logout
+POST {{url_dev}}/shop/logout
+Content-Type: application/json
+x-api-key: f8547d7c3c6db4233dcdc6e2b0e5cc7d724c918886184ada4b3b5672f6b2a08b
+x-client-id: 6558ab187f61b076b884dd47
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTU4YWIxODdmNjFiMDc2Yjg4NGRkNDciLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcwMDMxMDgzNywiZXhwIjoxNzAwNDgzNjM3fQ.jZqWIv5pD4-yE1CbuAWzzaFyy3bhR1Fpmab1TQDdsLM

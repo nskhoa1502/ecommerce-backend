@@ -8,6 +8,7 @@ const { getInfoData, generateKey } = require("../utils");
 const {
   BadRequestError,
   ConflictRequestError,
+  AuthFailureError
 } = require("../core/error.response");
 
 const RoleShop = {
@@ -20,6 +21,8 @@ const RoleShop = {
 // ======= SERVICE ======= //
 const { findShopByEmail } = require("./shop.service");
 class AccessService {
+
+
   // Frontend should include refreshToken in the request, if user already had cookie, we don't need to query into database => save resource and faster
 
   /*
@@ -137,6 +140,12 @@ class AccessService {
       metadata: null,
     };
   };
+
+  static logout = async(keyStore) => {
+    const delKey = await KeyTokenService.removeKeyById(keyStore._id)
+    console.log({delKey})
+    return delKey
+  }
 }
 
 module.exports = AccessService;
